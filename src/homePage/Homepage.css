@@ -1,0 +1,187 @@
+/* Home page container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Hero section styles */
+  .hero-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .hero-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .hero-description {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  .cta-btn {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Pricing cards section styles */
+  .pricing-cards {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  
+  .pricing-card {
+    flex-basis: 300px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  .pricing-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .pricing-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .pricing-price {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .pricing-features {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  
+  .pricing-features li {
+    margin-bottom: 10px;
+  }
+  
+  .pricing-cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pricing-cta-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* About Us section styles */
+  .about-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .about-cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .about-cta-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Contact Us section styles */
+  .contact-section {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .contact-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-cta-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-cta-btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* Footer styles */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    margin-top: 40px;
+  }
+  
+  .footer-text {
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .footer-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-link:hover {
+    color: #0056b3;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 32px;
+    }
+  
+    .hero-description {
+      font-size: 16px;
+    }
+  
+    .pricing-card {
+      flex-basis: 100%;
+      margin: 0 0 20px 0;
+    }
+  }
