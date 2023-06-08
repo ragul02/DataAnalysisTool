@@ -1,13 +1,10 @@
-import './App.css';
-// import Product from './Product';
-import HomePage from './homePage1/homePage';
 
+import "./App.css";
+import Router from "./routes/routes";
 function App() {
+
   return (
-    <div className="App">
-      {/* <Product></Product> */}
-      <HomePage></HomePage>
-      </div>
+     <Router/>
   );
 }
 

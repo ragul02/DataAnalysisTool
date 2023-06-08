@@ -1,0 +1,10 @@
+.awesome-background {
+  /* background: linear-gradient(135deg, #FFC371, #FF5F6D); */
+  /* background: linear-gradient(135deg, #2E86C1, #3498DB); */
+  /* background: linear-gradient(135deg, #2883e1, #3c41d7); */
+  background: #fafafa;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
