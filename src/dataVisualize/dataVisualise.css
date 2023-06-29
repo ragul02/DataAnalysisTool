@@ -1,0 +1,23 @@
+.excel-uploader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .dropzone {
+    border: 2px dashed #aaa;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .dropzone.active {
+    background-color: #eee;
+  }
+  
+  pre {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
