@@ -1,4 +1,4 @@
-.excel-uploader {
+/* .excel-uploader {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,5 +19,61 @@
     background-color: #f8f8f8;
     padding: 10px;
     border: 1px solid #ddd;
+  }
+   */
+
+   .excel-uploader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+  }
+  
+  .dropzone {
+    border: 2px dashed #aaa;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .dropzone.active {
+    background-color: #eee;
+  }
+  
+  .fixed-height {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+  }
+  
+  .pre {
+    background-color: #f8f8f8;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .column-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .x-axis-selector {
+    margin-bottom: 10px;
+  }
+  
+  .checkbox-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20px;
+  }
+  
+  .chart-container {
+    margin: 10px;
   }
   

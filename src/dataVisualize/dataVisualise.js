@@ -66,18 +66,7 @@ const [chartData, setChartData]=useState({
   ]
 })
 const [xAxislabel, setXAxislabel] = React.useState('');
-  // const data = {
-  //   labels,
-  //   datasets: [
-  //     {
-  //       label: 'Dataset 1',
-  //       data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-  //       backgroundColor: 'rgba(255, 99, 132, 0.5)',
-  //     }
-  //   ]
-  // };
-
-
+const [ismultipleDataSetAllowed, setIsmultipleDataSetAllowed] =  React.useState(false);
 
   const setXAxisChange = (event) => {
     setXAxislabel(event.target.value);
@@ -125,7 +114,10 @@ const [xAxislabel, setXAxislabel] = React.useState('');
     for (let C = range.s.c; C <= range.e.c; ++C) {
       const cellAddress = XLSX.utils.encode_cell({ r: range.s.r, c: C });
       const cell = sheet[cellAddress];
-      columnNames.push(cell.v);
+      if(cell?.v !== undefined ) {
+        columnNames.push(cell.v);
+      }
+    
     }
 
     setSheetColumnNames(columnNames);
@@ -149,7 +141,8 @@ const [xAxislabel, setXAxislabel] = React.useState('');
           const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
           const cell = sheet[cellAddress];
           // console.log("inisde if", R, cellAddress, cell, cell.v);
-          columnData.push(cell.v);
+          if(cell.v !== undefined )
+          columnData.push(cell.v) ;
         }
         break; // Exit the loop once data is retrieved from the "close" column
       }
@@ -168,6 +161,7 @@ const [xAxislabel, setXAxislabel] = React.useState('');
         return [...prevSelectedItems, columnName];
       }
     });
+    console.log('setSelectedColumnNames', selectedColumnNames)
     const range = XLSX.utils.decode_range(sheet["!ref"]);
     const columnData = [];
     for (let C = range.s.c; C <= range.e.c; ++C) {
@@ -215,13 +209,9 @@ const [xAxislabel, setXAxislabel] = React.useState('');
    
 
   };
-
   return (
     <div className="excel-uploader">
-      <div
-        {...getRootProps()}
-        className={`dropzone ${isDragActive ? "active" : ""}`}
-      >
+      <div {...getRootProps()} className={`dropzone ${isDragActive ? "active" : ""}`}>
         <input {...getInputProps()} />
         {isDragActive ? (
           <p>Drop the Excel file here...</p>
@@ -229,73 +219,61 @@ const [xAxislabel, setXAxislabel] = React.useState('');
           <p>Drag and drop an Excel file here, or click to select a file</p>
         )}
       </div>
-      {fileData && (
-        <div>
-          <h2>Uploaded File Data:</h2>
-          <pre>{JSON.stringify(fileData, null, 2)}</pre>
+  
+      <div className="fixed-height">
+        {fileData && (
+          <div>
+            <h2>Uploaded File Data:</h2>
+            <pre>{JSON.stringify(fileData, null, 2)}</pre>
+          </div>
+        )}
+      </div>
+  
+      {sheetcolumnNames && (
+        <div className="column-selector">
+          <div className="x-axis-selector">
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">X Axis</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={xAxislabel}
+                label="xaxis"
+                onChange={setXAxisChange}
+              >
+                {sheetcolumnNames.map((option, index) => (
+                  <MenuItem key={index} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
+          <div className="checkbox-list">
+            {sheetcolumnNames.map((item) => (
+              <FormControlLabel
+                key={item}
+                control={
+                  <Checkbox
+                    checked={selectedColumnNames.includes(item)}
+                    onChange={() => getColumnData(sheet, item)}
+                    name={item}
+                    color="primary"
+                  />
+                }
+                label={item}
+              />
+            ))}
+          </div>
         </div>
       )}
-      {/* {sheetcolumnNames && (
-        <div>
-          {sheetcolumnNames.map((item) => (
-            <div key={item}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={selectedColumnNames.includes(item)}
-                  onChange={() => getColumnData(sheet, item)}
-                />
-
-                {item}
-              </label>
-            </div>
-          ))}          
-        </div>
-      )} */}
-          {sheetcolumnNames && (
-            <div>
-              <div>
-              <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">X Axis</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value={xAxislabel}
-    label="xaxis"
-    onChange={setXAxisChange}
-  >
-    {sheetcolumnNames.map((option, index) => {
-          return (
-            <MenuItem key={index} value={option}>
-              {option}
-            </MenuItem>
-          )
-})}
-  </Select>
-</FormControl>
-                </div>
-                <div>
-              {sheetcolumnNames.map((item) => (
-                <FormControlLabel
-                  key={item}
-                  control={
-                    <Checkbox
-                      checked={selectedColumnNames.includes(item)}
-                      onChange={() => getColumnData(sheet, item)}
-                      name={item}
-                      color="primary"
-                    />
-                  }
-                  label={item}
-                />
-              ))}
-              </div>
-            </div>
-          )}
-          
-           <Bar options={options} data={chartData} />
+  
+      {/* <div className="chart-container"> */}
+        <Bar options={options} data={chartData} />
+      {/* </div> */}
     </div>
   );
+
 };
 
 export default DataVisualise;
